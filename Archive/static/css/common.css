@@ -1,0 +1,79 @@
+/*img 3:5*/
+
+*{
+    /*margin: 0px;*/
+    font-family: PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,STHeitiSC-Light,simsun,\\5B8B\4F53,WenQuanYi Zen Hei,WenQuanYi Micro Hei,"sans-serif";
+    /*font-size: 14px;*/
+    /*-webkit-font-smoothing:antialiased;*/
+    /*font-weight: 400;*/
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+    word-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    transition: all 0.3s;
+}
+
+li a:hover {
+    transition: all 0.3s;
+}
+
+section:after{
+    clear:both;
+    content:'';
+    display: table;
+}
+
+footer:after{
+    clear:both;
+    content:'';
+    display: table;
+}
+
+.opacity-0{
+    opacity: 0;
+    z-index: -999;
+}
+
+.opacity-1{
+    opacity: 1;
+    z-index: 0;
+}
+
+.display-none{
+    display: none;
+}
+.display-block{
+    display: block;
+}
+
+
+
+/*————————————————————————————————————————————————————————————*/

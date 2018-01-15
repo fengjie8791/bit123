@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bit</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<script src="../static/lib/js/jquery-3.2.1.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/script.js"></script>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-inverse">
+		  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="index.html">LOGO</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav navbar-center">		        
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BUY <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="index?coinType=BTC">BTC</a></li>
+		            <li><a href="index?coinType=ETH">ETH</a></li>
+		            <li><a href="index?coinType=OTHERS">OTHERS</a></li>
+		          </ul>
+		        </li>
+		        <li><a href="sell.html">SELL</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">POST <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="post.html">BTC</a></li>
+		            <li><a href="#">ETH</a></li>
+		            <li><a href="#">OTHERS</a></li>
+		          </ul>
+		        </li>
+		        <li><a href="/search">SEARCH</a></li>
+		      </ul>		      
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">EN/中</a></li>
+		        <li><a href="profile.html">Hi, Jerry</a></li>
+
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+	</header>
+	<section>
+		<div class="container">	
+			<div class="row">
+				<div class="well-box">
+					<div class="well">
+						<div class="list-centent row">
+							<div class="col-xs-4 col-md-3 text-center">
+						 		<img src="../static/images/profile/profile_photo.png" alt="">
+						 	</div>
+							<div class="col-xs-4 col-md-6">
+							   	<h5 class="mt-0">Name</h5>
+								<p>Trust 1 Trade 1</p>
+							</div>
+							<div class="col-xs-4 col-md-3">
+								<ul>
+							      <li>Verified ID Card</li>
+							      <li>Verified Phone</li>
+							      <li>Unverified Email</li>
+							    </ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<div class="row h-600p">
+				<div class="well-box col-xs-8 h-100">
+					<div class="well h-100">
+						<div class="chat-content">
+							<h3>Sell page</h3>
+							<p>Sell page</p>
+						</div>
+						<form class="form-inline chat-box">
+							 <input type="text" class="form-control" id="" placeholder="text">
+						  <button type="submit" class="btn btn-primary">Send</button>
+						</form>
+					</div>
+				</div>	
+				<div class="well-box col-xs-4 h-100">
+					<div class="well h-100">
+						<h4 class="mb-5">Price</h4>
+						<p class="mb-20">3340.07 CNY/ETH</p>
+						<h4 class="mb-5">Limits</h4>
+						<p class="mb-20">1000 - 1000 CNY</p>
+						<h4 class="mb-5">Payment method</h4>
+						<p class="mb-20">Alipay</p>
+						<h4 class="mb-5">Time of payment</h4>
+						<p class="mb-20">30 minitues</p>
+						<h4 class="mb-5">Enter the amount you want to buyt</h4>
+						
+						<form>
+						  <div class="row"> 
+						    <div class="col-md-12">
+						      <label for="validationDefault01">CNY</label>
+						      <input type="text" class="form-control" id="validationDefault01" placeholder="CNY" value="" required>
+						    </div>
+						  </div>
+						  <div class="row">
+						    <div class="col-md-12">
+						      <label for="validationDefault02">ETH</label>
+						      <input type="text" class="form-control" id="validationDefault02" placeholder="ETH" value="" required>
+						    </div>
+						  </div>
+						  
+
+						 <button type="button" class="btn btn-primary mt-20" data-toggle="modal" data-target="#confirmModal">Sell</button>
+						</form>
+
+					</div>
+				</div>	
+			</div>	
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<h3>Notice of the transaction</h3>
+			<hr>
+			<p>1.please understand the transaction information before the transation</p>
+			<p>1.please understand the transaction information before the transation</p>
+			<p>1.please understand the transaction information before the transation</p>
+			<p>1.please understand the transaction information before the transation</p>
+			<p>1.please understand the transaction information before the transation</p>
+			<p>1.please understand the transaction information before the transation</p>
+			<p>1.please understand the transaction information before the transation</p>
+			<p>1.please understand the transaction information before the transation</p>
+			<p>1.please understand the transaction information before the transation</p>
+		</div>
+	</section>	
+
+	<section>
+		<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Order confirmation</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <h4 class="mb-5">Price</h4>
+				<p class="mb-20">3340.07 CNY/ETH</p>
+				<h4 class="mb-5">Amount</h4>
+				<p class="mb-20">1000 CNY</p>
+				<h4 class="mb-5">Quantiy</h4>
+				<p class="mb-20">0.299395 ETH</p>
+				<p class="mb-20">Reminder: Please confirm the price in the order, the order for this transation will then be locted. Please make sure you complety process the purchase order.</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		        <a href="chat_confirm.html" class="btn btn-primary">OK</a>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</section>
+</body>
+</html>

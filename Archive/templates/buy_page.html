@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1">
+	<!-- SEO -->
+	<meta name="keywords" content="CToken,C Token">
+	<meta name="description" content="C Token provides global access to utility right. C Token will develop a Decentralized Utility Financing Protocol (DUFP) to protect participations through smart contract. ResponsibilityQuota Mechanism (RQM) generated from Proof-of-Stake (POS) engine and Dapp client communication encourages community to participate in the launch of high-quality utility right IPs.">
+	<meta name="author" content="author,email address">
+	<meta name="robots" content="index,follow">
+	<!-- general -->
+	<title>Block Global</title>
+	<link rel="shortcut icon" type="image/ico" href="../static/img/logo/logo-s.png" /> 
+	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="../static/css/common.css">
+	<link rel="stylesheet" href="../static/css/grid.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/fonts.css">
+	<script type="text/javascript" src="lib/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108552652-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-108552652-1');
+	</script>
+
+</head>
+<body>
+<header>
+	<!-- navigation bar -->
+	<div>
+		<div class="nav nav-effect">
+			<div class="column">
+				<img class="logo" src="../static/img/logo/logo.png">
+			</div>
+			<div class="column-right">
+				<ul>
+					<li><a href="http://127.0.0.1:5000/index">Home</a></li>
+				  	<li><a href="http://127.0.0.1:5000/buy">Buy</a></li>
+				  	<li><a href="http://127.0.0.1:5000/sell"> Sell</a></li>
+				  	<li><a href="http://127.0.0.1:5000/about">About</a></li>
+				  	<li><a href="http://127.0.0.1:5000/cn/index-cn">En / 中</a></li>
+				  	{% if current_user.is_authenticated %}
+			  	<li><a href="logout">Log Out</a></li>
+			  	{% else %}
+			  	<li><a href="login">Login</a></li>
+			  	{% endif %}
+				</ul>
+			</div>		
+		</div>
+	</div>		
+</header>
+
+<section class="buy">
+	<div class="container">
+		<div>
+			<div class="row profile">
+				<div class="col-6 column profile-info">
+					<img class="profile-img column" src="http://images.contactmusic.com/newsimages/david_beckham_1133321.jpg" alt="">
+					<h1>{{associate_user.username}}</h1>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+				</div>
+				<div class="column-right trade-info">
+					<div class="column-right">
+						<h1>{{associate_user.post_count}}</h1>
+						<span>Trades</span>
+					</div>
+					<div class="column-right">
+						<h1>{{associate_user.reputation}}</h1>
+						<span>Rating</span>
+					</div>
+					<div class="column-right">
+						<h1>100</h1>
+						<span>Trusted</span>
+					</div>
+				</div>
+			</div>
+
+			<br>
+
+			<div class="buy-page-info">
+				<div>Price: <p>{{mr_post.price}}</p></div>
+				<div>Limits: <p></p>{{mr_post.lower_bd}}-{{mr_post.upper_bd}}</div>
+				<div>Payment method: <p>{{mr_post.payment_method}}</p></div>
+				<div>Time of payment: <p>{{mr_post.time_limit}}</p></div>
+			</div>
+			
+			<br>
+			<a href="contact.html">buy</a>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-3 column">
+				<div class="footer-style">
+					<img src="../static/img/logo/logo.png">
+				</div>
+			</div>
+			<div class="col-3 column">
+				<div class="footer-style">
+					<p class="bottom-title">ABOUT US</p>
+					<p class="bottom-title">ICO CALENDAR</p>
+					<p class="bottom-title">CRYPTOCOIN PRICE</p>
+				</div>
+			</div>
+			<div class="col-3 column footer-style">
+				<p class="bottom-title">Contact Us</p>
+				<p class="bottom-content">Email:</p>
+				<p class="bottom-content">Wechat：</p>
+				<p class="bottom-content">Telegram：</p>
+			</div>
+			<div class="col-3 column">
+				<img src="">
+			</div>
+		</div>
+	</div>
+</footer>
+</body>
+</html>

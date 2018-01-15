@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bit</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/css/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="../static/css/common.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<script src="../static/lib/js/jquery-3.2.1.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/bootstrap-switch.min.js"></script>
+	<script src="../static/js/script.js"></script>
+	<script src="../static/js/chat.js"></script>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-inverse">
+		  <div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="index.html">LOGO</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  <ul class="nav navbar-nav navbar-center">		        
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BUY <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+					<li><a href="index?coinType=BTC">BTC</a></li>
+					<li><a href="index?coinType=ETH">ETH</a></li>
+					<li><a href="index?coinType=OTHERS">OTHERS</a></li>
+				  </ul>
+				</li>
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SELL <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+					<li><a href="sell?coinType=BTC">BTC</a></li>
+					<li><a href="sell?coinType=ETH">ETH</a></li>
+					<li><a href="sell?coinType=OTHERS">OTHERS</a></li>
+				  </ul>
+				</li>
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">POST <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+					<li><a href="post.html">BTC</a></li>
+					<li><a href="#">ETH</a></li>
+					<li><a href="#">OTHERS</a></li>
+				  </ul>
+				</li>
+				<li><a href="/search">SEARCH</a></li>
+			  </ul>		      
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="#">EN/中</a></li>
+				<li><button type="button" class="btn btn-primary mt-8" data-toggle="modal" data-target="#logInModal">LOGIN</button></li>
+
+			  </ul>
+			</div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+	</header>
+	<section>
+		<div class="container">
+			<div class="col-md-2">
+				<div class="row">
+					<div class="well-box col-md-12">
+						<div class="well">
+							<form action="" method="POST"> <!-- or method="post" -->
+							<button type="submit" class="btn btn-primary  btn-block" value="Newest" name="post_arrangement">Newest</button>
+							<button type="submit" class="btn btn-primary  btn-block" value="Rating" name="post_arrangement">Rating</button>
+							<button type="submit" class="btn btn-primary  btn-block" value="Price_increasing" name="post_arrangement">Price <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+							<button type="submit" class="btn btn-primary btn-block" value="Price_decreasing" name="post_arrangement">Price <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<!-- <div class="container"> -->
+					<div class="row">
+						<div class="well-box col-md-12">
+							<div class="well-height-customize well"></div>
+						</div>
+					</div>
+					<div class="row">
+						{% for p in sell_posts %}
+						<div class="well-box col-md-4">
+							<div class="well">
+								<h1 class="text-center">{{p.price}}</h1>
+								<hr>
+								<div class="list-centent row">
+									<div class="col-xs-4 text-center">
+										<img src="../static/images/profile/profile_photo.png" alt="">
+									</div>
+									<div class="col-xs-8">
+										<h5 class="mt-0">{{p.user.username}}</h5>
+										<p>Trust {{p.user.reputation}} Trade {{p.user.buypostcount + p.user.sellpostcount}}</p>
+									</div>
+								</div>
+								<hr>
+								<a class="btn btn-primary" href="chat.html">Chat</a>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buyModal_{{p.post_id}}">BUY</button>
+							</div>
+						</div>
+						<div class="modal fade" id="buyModal_{{p.post_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">BUY BUY BUY</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+											</button>
+									</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="list-centent row">
+												<div class="col-xs-12 text-center">
+													<img src="../static/images/profile/profile_photo.png" alt="">
+												</div>
+												<div class="col-xs-12 text-center">
+													<h5 class="mt-0">{{ p.user.username }}</h5>
+													<p>Trust {{p.user.reputation}} Trade {{p.user.buypostcount + p.user.sellpostcount}}</p>
+												</div>
+											</div>
+											<div class="text-center">
+												<a class="btn btn-primary" href="chat.html">Chat</a>
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<h4 class="mb-5">Price</h4>
+											<p class="mb-20">{{p.price}} {{p.fiat_type}}/{{p.coin_type}}</p>
+											<h4 class="mb-5">Limits</h4>
+											<p class="mb-20">{{p.lower_bd}} - {{p.upper_bd}} {{p.fiat_type}}</p>
+											<h4 class="mb-5">Payment method</h4>
+											<p class="mb-20">{{p.payment_method}}</p>
+											<h4 class="mb-5">Time of payment</h4>
+											<p class="mb-20">{{p.time_limit}} minitues</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<form>
+											  <div class="row"> 
+												<div class="col-md-6">
+												  <label for="validationDefault01">{{p.fiat_type}}</label>
+												  <input type="text" class="form-control" id="validationDefault01" placeholder="{{p.fiat_type}}" value="" required>
+												</div>
+												<div class="col-md-6">
+												  <label for="validationDefault02">{{p.coin_type}}</label>
+												  <input type="text" class="form-control" id="validationDefault02" placeholder="{{p.coin_type}}" value="" required>
+												</div>
+											  </div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal">BUY</button>
+								</div>
+							</div>
+						 </div>
+					</div>			
+					{% endfor %}
+						<!-- <div class="well-box col-md-4">
+							<div class="well well-height-customize"></div>
+						</div>
+						<div class="well-box col-md-4">
+							<div class="well well-height-customize"></div>
+						</div> -->
+				</div>
+
+					<!-- <div class="row">
+						<div class="well-box col-md-4">
+							<div class="well well-height-customize"></div>
+						</div>
+						<div class="well-box col-md-4">
+							<div class="well well-height-customize"></div>
+						</div>
+						<div class="well-box col-md-4">
+							<div class="well well-height-customize"></div>
+						</div>
+					</div> -->
+
+					<!-- <div class="row">
+						<div class="well-box col-md-12">
+							<div class="well-height-customize well"></div>
+						</div>
+					</div> -->
+			</div>
+		</div>
+	</section>
+	<section>
+		<!-- stuff here -->
+	</section>
+
+	<section>
+		<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Order confirmation</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<h4 class="mb-5">Price</h4>
+				<p class="mb-20">3340.07 CNY/ETH</p>
+				<h4 class="mb-5">Amount</h4>
+				<p class="mb-20">1000 CNY</p>
+				<h4 class="mb-5">Quantiy</h4>
+				<p class="mb-20">0.299395 ETH</p>
+				<p class="mb-20">Reminder: Please confirm the price in the order, the order for this transation will then be locted. Please make sure you complety process the purchase order.</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<a href="chat_confirm.html" class="btn btn-primary">OK</a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</section>
+	<section>
+		<div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<!-- <h5 class="modal-title" id="exampleModalLabel">Log In</h5> -->
+
+				<ul class="nav nav-tabs">
+				  <li class="active"><a href="#">Log In</a></li>
+				  <li><a href="#">New account</a></li>
+				</ul>
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<form>
+				  <div class="form-group">
+					<label for="">Username</label>
+					<input type="text" class="form-control" id="" aria-describedby="username" placeholder="Username">
+					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				  </div>
+				  <div class="form-group">
+					<label for="">Password</label>
+					<input type="password" class="form-control" id="" placeholder="Password">
+				  </div>
+				  <div class="form-check">
+					<label class="form-check-label">
+					  <input type="checkbox" class="form-check-input">
+					  Check me out
+					</label>
+				  </div>
+				  <a href="profile.html" class="btn btn-primary">Submit</a>
+				</form>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</section>
+
+
+	<!-- chat box -->
+	<section>
+		<div class="container">
+		    <div class="row chat-window col-xs-10 col-md-4 col-lg-3 opacity-0" id="chat_window_1"">
+		        <div class="col-xs-12 col-md-12">
+		        	<div class="panel panel-default">
+		                <div class="panel-heading top-bar">
+		                    <div class="col-md-8 col-xs-8">
+		                    	<h3 id="chat_header_list" class="panel-title"><span id="chat_back" class="glyphicon glyphicon-comment"></span> Chat</h3>
+		                        <h3 id="chat_header_each" class="panel-title display-none"><span id="chat_back" class="glyphicon glyphicon-chevron-left"></span> Jonh Jackson</h3>
+		                    </div>
+		                    <div class="col-md-4 col-xs-4" style="text-align: right;">
+		                        <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
+		                        <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a>
+		                    </div>
+		                </div>
+		                <div class="panel-body msg_container_base">
+		                	<!-- <div class="msg-container-big right-100"> -->
+
+		                		<div class="msg-user-container">
+			                    	<div class="row msg_container base_sent">
+				                        <div class="col-md-12 col-xs-12">
+
+				                        	 <div class="col-md-2 col-xs-2 avatar">
+					                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+					                        </div>
+
+				                            <div class="user">
+				                                <p> Jonh Jackson</p>
+				                              
+				                            </div>
+				                        </div>
+				                       
+				                    </div>
+			                    </div>
+
+			                	<div class="msg-each-container display-none">
+				                    <div class="row msg_container base_sent">
+				                        <div class="col-md-10 col-xs-10">
+				                            <div class="messages msg_sent">
+				                                <p>that mongodb thing looks good, huh?
+				                                tiny master db, and huge document store</p>
+				                                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+				                            </div>
+				                        </div>
+				                        <div class="col-md-2 col-xs-2 avatar">
+				                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+				                        </div>
+				                    </div>
+				                    <div class="row msg_container base_receive">
+				                        <div class="col-md-2 col-xs-2 avatar">
+				                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+				                        </div>
+				                        <div class="col-md-10 col-xs-10">
+				                            <div class="messages msg_receive">
+				                                <p>that mongodb thing looks good, huh?
+				                                tiny master db, and huge document store</p>
+				                                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="row msg_container base_receive">
+				                        <div class="col-md-2 col-xs-2 avatar">
+				                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+				                        </div>
+				                        <div class="col-xs-10 col-md-10">
+				                            <div class="messages msg_receive">
+				                                <p>that mongodb thing looks good, huh?
+				                                tiny master db, and huge document store</p>
+				                                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="row msg_container base_sent">
+				                        <div class="col-xs-10 col-md-10">
+				                            <div class="messages msg_sent">
+				                                <p>that mongodb thing looks good, huh?
+				                                tiny master db, and huge document store</p>
+				                                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+				                            </div>
+				                        </div>
+				                        <div class="col-md-2 col-xs-2 avatar">
+				                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+				                        </div>
+				                    </div>
+				                    <div class="row msg_container base_receive">
+				                        <div class="col-md-2 col-xs-2 avatar">
+				                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+				                        </div>
+				                        <div class="col-xs-10 col-md-10">
+				                            <div class="messages msg_receive">
+				                                <p>that mongodb thing looks good, huh?
+				                                tiny master db, and huge document store</p>
+				                                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="row msg_container base_sent">
+				                        <div class="col-md-10 col-xs-10 ">
+				                            <div class="messages msg_sent">
+				                                <p>that mongodb thing looks good, huh?
+				                                tiny master db, and huge document store</p>
+				                                <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+				                            </div>
+				                        </div>
+				                        <div class="col-md-2 col-xs-2 avatar">
+				                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+				                        </div>
+				                    </div>
+			                    </div>
+		                   
+			                    
+			               <!--  </div>  -->
+		                </div>
+		                <div class="panel-footer">
+		                    <div class="input-group">
+		                        <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+		                        <span class="input-group-btn">
+		                        <button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+		                        </span>
+		                    </div>
+		                </div>
+		    		</div>
+		        </div>
+		    </div>
+    
+<!--     <div class="btn-group dropup">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-cog"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#" id="new_chat"><span class="glyphicon glyphicon-plus"></span> Novo</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-list"></span> Ver outras</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-remove"></span> Fechar Tudo</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><span class="glyphicon glyphicon-eye-close"></span> Invisivel</a></li>
+        </ul>
+    </div> -->
+
+		    <div class="chat-small-btn">
+		    	<div class="btn btn-primary" id="chat_small_btn">Chat</div>
+		    </div>
+		</div>
+
+	</section>
+</body>
+</html>

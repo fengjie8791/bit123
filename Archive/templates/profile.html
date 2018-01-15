@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bit</title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/css/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<script src="../static/lib/js/jquery-3.2.1.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/bootstrap-switch.min.js"></script>
+	<script src="../static/js/script.js"></script>
+	<script type="text/javascript">
+    function validate(available)
+    {
+        var field1 = document.getElementById("withdraw_amount");
+        
+        if (field1.value < 0 || field1.value > available)
+        {
+            window.alert("Amount to withdraw exceeds amount that's available");
+
+            // Change the value back to the previous valid answer
+            // field1.value = saved.value;
+            return false;
+        }
+        window.alert("Transaction succeeded");
+        // Save the valid input
+        // saved.value = field1.value;
+        return true;
+    }
+	</script>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-inverse">
+		  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="index.html">LOGO</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav navbar-center">		        
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BUY <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+					<li><a href="index?coinType=BTC">BTC</a></li>
+					<li><a href="index?coinType=ETH">ETH</a></li>
+					<li><a href="index?coinType=OTHERS">OTHERS</a></li>
+		          </ul>
+		        </li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SELL <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+					<li><a href="sell?coinType=BTC">BTC</a></li>
+					<li><a href="sell?coinType=ETH">ETH</a></li>
+					<li><a href="sell?coinType=OTHERS">OTHERS</a></li>
+		          </ul>
+		        </li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">POST <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="post.html">BTC</a></li>
+		            <li><a href="#">ETH</a></li>
+		            <li><a href="#">OTHERS</a></li>
+		          </ul>
+		        </li>
+		        <li><a href="/search">SEARCH</a></li>
+		      </ul>		      
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">EN/中</a></li>
+		        <li><a href="profile.html">Hi, Jerry</a></li>
+
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+	</header>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- List group -->
+					<div class="well-box col-xs-4">
+					 <!--  <div class="panel-group">
+					    <div class="panel panel-default">
+					      <div class="panel-heading">
+					        <h4 class="panel-title">
+					          <a data-toggle="collapse" href="#collapse1">Collapsible list group</a>
+					        </h4>
+					      </div>
+					      <div id="collapse1" class="panel-collapse collapse">
+					        <ul class="list-group">
+					          <li class="list-group-item">One</li>
+					          <li class="list-group-item">Two</li>
+					          <li class="list-group-item">Three</li>
+					        </ul>
+					        <div class="panel-footer">Footer</div>
+					      </div>
+					    </div>
+					  </div> -->
+
+						<div class="list-group" id="myList" role="tablist">
+						  <a class="list-group-item list-group-item-action active" data-toggle="list" href="#basic" role="tab">Basic Information</a>
+						  <a class="list-group-item list-group-item-action" data-toggle="list" href="#auth" role="tab">Authernatication</a>							
+						  
+
+							<button class="list-group-item list-group-item-action profile-list-btn" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseExample">
+   							 Wallet
+  							</button>
+
+  							<div id="collapse1" class="panel-collapse collapse">
+						        <ul class="list-group">
+						          <a class="list-group-item list-group-item-action" data-toggle="list" href="#wallet_btc" role="tab">BTC Wallet</a>
+						          <a class="list-group-item list-group-item-action" data-toggle="list" href="#wallet_eth" role="tab">ETH Wallet</a>
+						  			<a class="list-group-item list-group-item-action" data-toggle="list" href="#wallet_oth" role="tab">Others Wallet</a>
+						        </ul>
+						     </div>
+
+						  <a class="list-group-item list-group-item-action" data-toggle="list" href="#wallet_oth" role="tab">Others Wallet</a>
+						  <a class="list-group-item list-group-item-action" data-toggle="list" href="#post" role="tab">Post History</a>
+						  <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
+						</div>
+					</div>
+					<!-- Tab panes -->
+					<div class="tab-content col-xs-8">
+					  <div class="tab-pane active" id="basic" role="tabpanel">
+						<div class="well-box col-xs-6">
+							<div class="well profile-name">
+								<div class="text-center">
+							 		<img src="../static/images/profile/profile_photo.png" alt="">
+							 		<h3>Name</h3>
+							 		<p>User ID: 12345</p>
+							 	</div>
+							</div>
+						</div>
+						<div class="well-box col-xs-6">
+							<div class="well profile-right">
+								<div class="row">
+									<div class="col-xs-4">
+										<h4>Trust</h4>
+									</div>
+									<div class="col-xs-4">
+										<h4>Trust</h4>
+									</div>
+									<div class="col-xs-4">
+										<h4>Trust</h4>
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-xs-4">
+										<h4>1</h4>
+									</div>
+									<div class="col-xs-4">
+										<h4>1</h4>
+									</div>
+									<div class="col-xs-4">
+										<h4>100%</h4>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="well-box col-xs-6">
+							<div class="well profile-right">
+								<ul>
+							      <li>Verified ID Card</li>
+							      <li>Verified Phone</li>
+							      <li>Unverified Email</li>
+							    </ul>
+							</div>
+						</div>
+						<div class="well-box col-xs-12">
+							<div class="well profile-basic-content">
+								<div class="row">
+									<div class="col-xs-6">
+										<h4>Registered Date:</h4>
+										<p>2017-11-26 11:09:12</p>
+										<h4>Email:</h4>
+										<p>seanshenzx@gmail.com</p>
+										<h4>Phone:</h4>
+										<p>Not Verified</p>
+										<h4>Language:</h4>
+										<p>Chinese</p>
+										<h4>First trade date</h4>
+										<p>2017-11-26 11:09:12</p>
+									</div>
+									<div class="col-xs-6">
+										<h4>Trand frequency:</h4>
+										<p>1</p>
+										<h4>Average release time:</h4>
+										<p>0 min</p>
+										<h4>BTC Traded amount:</h4>
+										<p>0.00012 BTC</p>
+										<h4>ETC Traded amount:</h4>
+										<p>0.00012 ETC</p>
+										<h4>LTC Traded amount:</h4>
+										<p>0.00012 LTC</p>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					  </div>
+					  <div class="tab-pane" id="auth" role="tabpanel">
+						<div class="well-box col-xs-12">
+							<div class="well">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="panel-group" id="accordion">
+										    <div class="panel panel-default">
+										      <div class="panel-heading">
+										        <h4 class="panel-title">
+										          <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">Two-factor authentication</a>
+										        </h4>
+										      </div>
+										      <div id="collapse11" class="panel-collapse collapse in">
+										        <div class="panel-body">
+													<form action="">
+														<label for="">abc</label>
+														<input type="text">
+														<button class="btn btn-primary">submit</button>
+														<input type="checkbox" name="my-checkbox" checked>
+													</form>
+													
+
+										        </div>
+										      </div>
+										    </div>
+										    <div class="panel panel-default">
+										      <div class="panel-heading">
+										        <h4 class="panel-title">
+										          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Asset Password</a>
+										        </h4>
+										      </div>
+										      <div id="collapse2" class="panel-collapse collapse">
+										        <div class="panel-body">
+										        	<form action="">
+										        		 <div class="form-group">
+															<label for="">passwword</label>
+															<input type="password" placeholder="new password">
+															<input type="password" placeholder="re-enter new password">
+															<button class="btn btn-primary">submit</button>
+														 </div>
+													</form>
+												</div>
+										      </div>
+										    </div>
+										    <div class="panel panel-default">
+										      <div class="panel-heading">
+										        <h4 class="panel-title">
+										          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Verified ID Card</a>
+										        </h4>
+										      </div>
+										      <div id="collapse3" class="panel-collapse collapse">
+										        <div class="panel-body">
+										        	<form>
+													  <div class="form-group">
+													    <label for="exampleFormControlFile1">Select ID file</label>
+													    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+													  </div>
+													</form>
+												</div>	
+										      </div>
+										    </div>
+										    <div class="panel panel-default">
+										      <div class="panel-heading">
+										        <h4 class="panel-title">
+										          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Verfied Phone</a>
+										        </h4>
+										      </div>
+										      <div id="collapse4" class="panel-collapse collapse">
+										      	<div class="panel-body">
+											        <form action="">
+														<label for="">Phone Number</label>
+														<input type="text">
+														<button type="button" class="btn btn-primary mt-8" data-toggle="modal" data-target="#phoneModal">Submit</button>
+													</form>
+												</div>
+											  </div>
+										    </div>
+										    <div class="panel panel-default">
+										      <div class="panel-heading">
+										        <h4 class="panel-title">
+										          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Unverified Email</a>
+										        </h4>
+										      </div>
+										      <div id="collapse5" class="panel-collapse collapse">
+											        <div class="panel-body">
+											        	<form action="">
+															<label for="">Email</label>
+															<input type="email">
+															<button type="button" class="btn btn-primary mt-8" data-toggle="modal" data-target="#emailModal">Submit</button>
+														</form>
+													</div>
+										      </div>
+										    </div>
+										  </div> 
+									</div>
+								</div>
+							</div>
+						</div>	
+					  </div>
+					  <div class="tab-pane" id="wallet_btc" role="tabpanel">
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<h4>Available: {{ current_user.btc_balance - current_user.btc_frozen }} BTC</h4>
+									<p>BTC Fronzen assets:{{current_user.btc_frozen}} BTC Total:{{ current_user.btc_balance }} BTC</p>
+								</div>
+							</div>
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<ul class="nav nav-tabs">
+									  <li class="active"><a data-toggle="tab" href="#deposit_btc">Deposit</a></li>
+									  <li><a data-toggle="tab" href="#withdraw_btc">Withdraw</a></li>
+									</ul>
+
+									<div class="tab-content">
+									  <div id="deposit_btc" class="tab-pane fade in active">
+									    <h4>Please deposit bitcoin to this address: {{current_user.btc_address}}</h4>
+									    <img src="{{ qrcode(current_user.btc_address) }}">
+									    <p>Tips: Send only BTC to the deposite address.bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla</p>
+									    <p>Please do not sent fund with smart contract, or it won't be accepted</p>
+									  </div>
+									  <div id="withdraw_btc" class="tab-pane fade">
+									    <h3>Withdraw</h3>
+
+									    <form action="" method="POST">
+									    	Destination address: <input type="text" name="withdraw_address">
+									    	Amount: <input type="text" id="withdraw_amount" name="withdraw_amount">
+									    	<button type="submit" class="btn btn-primary" name="withdraw" value="withdraw_btc" onclick="validate({{current_user.btc_balance}}-{{current_user.btc_frozen}});">Send BTC</button>
+									    </form>
+									  </div>
+									</div>
+								</div>
+							</div>
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<h4>Record</h4>
+									<div class="row">
+										<div class="col-xs-3">
+											<h5>Time</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Address</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Amount</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Status</h5>
+										</div>
+									</div>
+									<hr>
+									{% for tx in transactions %}
+									<div class="row">
+										<div class="col-xs-3">
+											<p>tx.time</p>
+										</div>
+										<div class="col-xs-3">
+											<p>tx.receiver_address</p>
+										</div>
+										<div class="col-xs-3">
+											<p>tx.amount</p>
+										</div>
+										<div class="col-xs-3">
+											<p>tx.state</p>
+										</div>
+									</div>
+									{% endfor %}
+									<div class="row">
+										<div class="col-xs-3">
+											<p>fake: should be deleted 11/26/2017 12:34pm</p>
+										</div>
+										<div class="col-xs-3">
+											<p>fdasfdsa</p>
+										</div>
+										<div class="col-xs-3">
+											<p>gdfasfds</p>
+										</div>
+										<div class="col-xs-3">
+											<p>fdsfads</p>
+										</div>
+									</div>
+								</div>
+							</div>
+					  </div>
+					  <div class="tab-pane" id="wallet_eth" role="tabpanel">
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<h4>Available: {{ current_user.eth_balance - current_user.eth_frozen }} ETH</h4>
+									<p>ETH Fronzen assets:{{current_user.eth_frozen}} ETH Total:{{ current_user.eth_balance }} ETH</p>
+								</div>
+							</div>
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<ul class="nav nav-tabs">
+									  <li class="active"><a data-toggle="tab" href="#deposit_eth">Deposit</a></li>
+									  <li><a data-toggle="tab" href="#withdraw_eth">Withdraw</a></li>
+									</ul>
+
+									<div class="tab-content">
+									  <div id="deposit_eth" class="tab-pane fade in active">
+									    <h4>Please deposit ethereum to this address: {{current_user.eth_address}} </h4>
+									    <img src="{{ qrcode(current_user.eth_address) }}"> 
+									    <p>Tips: Send only ETH to the deposite address.bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla</p>
+									    <p>Please do not sent fund with smart contract, or it won't be acdepted</p>
+									  </div>
+									  <div id="withdraw_eth" class="tab-pane fade">
+									    <h3>Withdraw</h3>
+									    <form action="" method="POST">
+									    	Destination address: <input type="text" name="withdraw_address">
+									    	Amount: <input type="text" name="withdraw_amount">
+									    	<button type="submit" class="btn btn-primary" name="withdraw" value="withdraw_eth" onclick="validate({{current_user.eth_balance}}-{{current_user.eth_frozen}});">Send ETH</button>
+									    </form>
+									  </div>
+									</div>
+								</div>
+							</div>
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<h4>Record</h4>
+									<div class="row">
+										<div class="col-xs-3">
+											<h5>Time</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Address</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Amount</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Status</h5>
+										</div>
+									</div>
+									<hr>
+									{% for tx in transactions %}
+									<div class="row">
+										<div class="col-xs-3">
+											<p>tx.time</p>
+										</div>
+										<div class="col-xs-3">
+											<p>tx.receiver_address</p>
+										</div>
+										<div class="col-xs-3">
+											<p>tx.amount</p>
+										</div>
+										<div class="col-xs-3">
+											<p>tx.state</p>
+										</div>
+									</div>
+									{% endfor %}
+									<div class="row">
+										<div class="col-xs-3">
+											<p>fake: should be deleted 11/26/2017 12:34pm</p>
+										</div>
+										<div class="col-xs-3">
+											<p>fdasfdsa</p>
+										</div>
+										<div class="col-xs-3">
+											<p>gdfasfds</p>
+										</div>
+										<div class="col-xs-3">
+											<p>fdsfads</p>
+										</div>
+									</div>
+								</div>
+							</div>
+					  </div>
+					  <div class="tab-pane" id="wallet_oth" role="tabpanel">
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<h4>Available: 1.0102315 LHL</h4>
+									<p>LHL Fronzen assets:0 LHL Total:1.0102315 LHL</p>
+								</div>
+							</div>
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<ul class="nav nav-tabs">
+									  <li class="active"><a data-toggle="tab" href="#deposit">Deposit</a></li>
+									  <li><a data-toggle="tab" href="#withdraw">Withdraw</a></li>
+									</ul>
+
+									<div class="tab-content">
+									  <div id="deposit" class="tab-pane fade in active">
+									    <h4>Please deposit bitcoin to this address: 1232412334123214312</h4>
+									    <button class="btn btn-primary">All address</button>
+									    <p>Tips: Send only ETH to the deposite address.bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla</p>
+									    <p>Please do not sent fund with smart contract, or it won't be acdepted</p>
+									  </div>
+									  <div id="withdraw" class="tab-pane fade">
+									    <h3>Withdraw</h3>
+									    <button class="btn btn-primary">All address</button>
+									  </div>
+									</div>
+								</div>
+							</div>
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<h4>Record</h4>
+									<div class="row">
+										<div class="col-xs-3">
+											<h5>Time</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Address</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Amoun</h5>
+										</div>
+										<div class="col-xs-3">
+											<h5>Status</h5>
+										</div>
+									</div>
+									<hr>
+									<div class="row">
+										<div class="col-xs-3">
+											<p>11/26/2017 12:34pm</p>
+										</div>
+										<div class="col-xs-3">
+											<p>fdasfdsa</p>
+										</div>
+										<div class="col-xs-3">
+											<p>gdfasfds</p>
+										</div>
+										<div class="col-xs-3">
+											<p>fdsfads</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-3">
+											<p>11/26/2017 12:34pm</p>
+										</div>
+										<div class="col-xs-3">
+											<p>fdasfdsa</p>
+										</div>
+										<div class="col-xs-3">
+											<p>gdfasfds</p>
+										</div>
+										<div class="col-xs-3">
+											<p>fdsfads</p>
+										</div>
+									</div>
+								</div>
+							</div>
+					  </div>
+					  <div class="tab-pane" id="post" role="tabpanel">
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<div class="row">
+										<div class="col-xs-2">
+											<h6>Created Time</h6>
+										</div>
+										<div class="col-xs-2">
+											<h5>ID</h5>
+										</div>
+										<div class="col-xs-2">
+											<h5>Type</h5>
+										</div>
+										<div class="col-xs-2">
+											<h5>Country</h5>
+										</div>
+										<div class="col-xs-2">
+											<h5>Price</h5>
+										</div>
+										<div class="col-xs-2">
+											<h5>Status</h5>
+										</div>
+									</div>
+									<hr>
+									<div class="row">
+										<div class="col-xs-2">
+											<p>11/21/2017</p>
+										</div>
+										<div class="col-xs-2">
+											<p>5848548</p>
+										</div>
+										<div class="col-xs-2">
+											<p>Buy</p>
+										</div>
+										<div class="col-xs-2">
+											<p>China</p>
+										</div>
+										<div class="col-xs-2">
+											<p>200 USD</p>
+										</div>
+										<div class="col-xs-2">
+											<p>Pending</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-2">
+											<p>11/21/2017</p>
+										</div>
+										<div class="col-xs-2">
+											<p>5848548</p>
+										</div>
+										<div class="col-xs-2">
+											<p>Buy</p>
+										</div>
+										<div class="col-xs-2">
+											<p>China</p>
+										</div>
+										<div class="col-xs-2">
+											<p>200 USD</p>
+										</div>
+										<div class="col-xs-2">
+											<p>Pending</p>
+										</div>
+									</div>
+								</div>
+							</div>							
+					  </div>
+					  <div class="tab-pane" id="settings" role="tabpanel">
+							<div class="well-box col-xs-12">
+								<div class="well">
+									<h4><a href="">Payment password</a></h4>
+									<p>will be used for the withdrawal of Bitcoin</p>
+									<h4><a href="">Bind Email</a></h4>
+									<p>will be used for login, find password</p>
+									<h4><a href="">Bind phone</a></h4>
+									<p>will be used for login, find password</p>
+									<h4><a href="">Login password</a></h4>
+									<p>will be used for login</p>
+									<h4><a href="">Google Verfication</a></h4>
+									<p>After binding login, offer, pay when you need Google secondary verifiation</p>
+								</div>
+							</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+
+	<section>
+		<div class="modal fade" id="phoneModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Phone</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<form>
+				  <div class="form-group">
+					<label for="">Please Type in the 6 digital number on your phone</label>
+					<input type="text" class="form-control" id="" aria-describedby="phone" placeholder="6 digital">
+				  </div>
+				  <!-- <a href="profile.html" class="btn btn-primary">Resend</a> -->
+				  <a href="profile.html" class="btn btn-primary">Submit</a>
+				</form>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</section>
+
+
+	<section>
+		<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Email</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<form>
+					<h5 for="">Please check the virified email</h5>
+					
+				  <!-- <a href="profile.html" class="btn btn-primary">Resend</a> -->
+				  <a href="profile.html" class="btn btn-primary">Submit</a>
+				</form>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</section>
+	
+
+</body>
+</html>
